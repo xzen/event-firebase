@@ -1,0 +1,11 @@
+{
+  "name": "@so-xzen/event",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "vanilla-router": "^1.2.6"
+  }
+}
