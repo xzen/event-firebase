@@ -10,6 +10,16 @@ class Controller {
       return html;
     });
   }
+
+  /**
+   * DOM parse From String
+   * @param {string} str
+   */
+  DOMParseFromString (str) {
+    const parser = new DOMParser();
+
+    return parser.parseFromString(str, 'text/html');
+  }
 }
 
 export default Controller;
