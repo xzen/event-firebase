@@ -1,23 +1,21 @@
+import Controller from './controller.js';
+
 /**
  * @@Signin
  */
-class Signin {
+class Signin extends Controller {
   constructor () {
-    this.html = '';
+    super();
+
     this.render();
   }
 
-  render () {
-    const el = document.querySelector('.container');
-    const fetch = window.fetch('./views/signin.html', {
-      method: 'GET'
-    });
+  async render () {
+    const el = document.querySelector('.container-fluid');
 
-    fetch.then(response => {
-      return response.text();
-    }).then(html => {
-      el.innerHTML = html;
-    });
+    this.tpl = await this.getTemplate('./views/signin.html');
+
+    el.innerHTML = this.tpl;
   }
 }
 

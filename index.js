@@ -1,15 +1,13 @@
 'use strict';
 
-// Config
-import config from './config.js';
-
 // Controllers
+import Navigation from './controllers/navigation.js';
 import Home from './controllers/home.js';
 import Signout from './controllers/signout.js';
 import Signin from './controllers/signin.js';
 import Signup from './controllers/signup.js';
 
-/** 
+/**
  * @@ App
  */
 class App {
@@ -22,21 +20,10 @@ class App {
       root: '/index.html'
     });
 
-    this.router.add('/', () => {
-      const home = new Home();
-    });
-
-    this.router.add('/user/signout', () => {
-      const signout = new Signout();
-    });
-
-    this.router.add('/user/signin', () => {
-      const signin = new Signin();
-    });
-
-    this.router.add('/user/signup', () => {
-      const signup = new Signup();
-    });
+    this.router.add('/', () => (new Home()));
+    this.router.add('/user/signout', () => (new Signout()));
+    this.router.add('/user/signin', () => (new Signin()));
+    this.router.add('/user/signup', () => (new Signup()));
 
     this.router.addUriListener().check();
   }
@@ -46,6 +33,9 @@ class App {
    */
   run () {
     document.addEventListener('DOMContentLoaded', () => {
+      const navigation = new Navigation();
+      navigation.render('#navigation');
+
       this.routes();
     });
   }
