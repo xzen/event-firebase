@@ -8,7 +8,7 @@
   margin-bottom: 30px;
 }
 
-.center-content {
+#signin, #signup  {
   padding: 30px;
   margin: 0 auto;
   width: 400px;

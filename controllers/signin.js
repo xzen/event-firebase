@@ -10,6 +10,9 @@ class Signin extends Controller {
     this.render();
   }
 
+  /**
+   * Render
+   */
   async render () {
     const el = document.querySelector('.container-fluid');
 
@@ -24,6 +27,9 @@ class Signin extends Controller {
     })
   }
 
+  /**
+   * Get input values
+   */
   getInputValues () {
     const mail = document.querySelector('.singin-input-mail').value;
     const password = document.querySelector('.singin-input-password').value;
@@ -34,6 +40,9 @@ class Signin extends Controller {
     } 
   }
 
+  /**
+   * Check auth
+   */
   checkAuth (oauth) {
     firebase.auth().signInWithEmailAndPassword(oauth.mail, oauth.password).then(() => {
       vNotify.success({

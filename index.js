@@ -37,7 +37,7 @@ class App {
   }
 
   /**
-   * Run
+   * Initialize
    */
   initialize () {
     document.addEventListener('DOMContentLoaded', () => {

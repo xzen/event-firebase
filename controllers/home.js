@@ -22,12 +22,18 @@ class Home extends Controller {
     this.renderEventsList();
   }
 
+  /**
+   * Render
+   */
   render () {
     const el = document.querySelector('.container-fluid');
 
     el.innerHTML = this.tplHome;
   }
 
+  /**
+   * Render events list
+   */
   renderEventsList () {
     const el = document.querySelector('.events-list');
     const eventsListDom = [];

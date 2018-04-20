@@ -1,5 +1,3 @@
-'use strict';
-
 const config = {
   firebase: {
     apiKey: 'AIzaSyALxTxpMWECJBOogJ8jDOQdmF5HCmfIykM',
