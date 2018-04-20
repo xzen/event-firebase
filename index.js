@@ -1,5 +1,7 @@
 'use strict';
 
+import config from './config.js'
+
 // Controllers
 import Navigation from './controllers/navigation.js';
 import Home from './controllers/home.js';
@@ -12,6 +14,10 @@ import Signup from './controllers/signup.js';
  * @@ App
  */
 class App {
+  constructor() {
+    this.initialize();
+  }
+
   /**
    * Routes
    */
@@ -33,8 +39,10 @@ class App {
   /**
    * Run
    */
-  run () {
+  initialize () {
     document.addEventListener('DOMContentLoaded', () => {
+      firebase.initializeApp(config.firebase);
+
       new Navigation();
 
       this.routes();
@@ -42,6 +50,4 @@ class App {
   }
 }
 
-const app = new App();
-
-app.run();
+new App();

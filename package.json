@@ -6,6 +6,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "firebase": "^4.13.0",
     "vanilla-router": "^1.2.6"
   }
 }
