@@ -30,7 +30,7 @@ class App {
     this.router.add('/', () => (new Home()));
     this.router.add('/user/signout', () => (new Signout()));
     this.router.add('/user/signin', () => (new Signin()));
-    this.router.add('/user/signup', () => (new Signup()));
+    this.router.add('/user/signup', () => (new Signup(this.router)));
     this.router.add('/event/show/(:any)', (id) => (new EventShow(this.router, id)));
 
     this.router.addUriListener().check();

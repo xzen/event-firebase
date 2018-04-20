@@ -4,14 +4,14 @@ import Controller from './controller.js';
  * @@Signup
  */
 class Signup extends Controller {
-  constructor () {
+  constructor (router) {
     super();
-    
-    this.firestore = firebase.firestore();
     const settings = {
       timestampsInSnapshots: true
     };
 
+    this.router = router;
+    this.firestore = firebase.firestore();
     this.firestore.settings(settings);
     this.auth = firebase.auth();
     this.render();
@@ -27,6 +27,9 @@ class Signup extends Controller {
     this.onClickSubmit();
   }
 
+  /**
+   * On click submit
+   */
   onClickSubmit() {
     const elButton = document.querySelector('.signup-submit');
     const elForm = document.querySelector('#signup > form');
@@ -54,30 +57,38 @@ class Signup extends Controller {
       const data = {
         'lastname': elForm.querySelector('.signup-lastname').value,
         'firstname': elForm.querySelector('.signup-firstname').value,
-        'email': email,
-        'birthDate': elForm.querySelector('.signup-birth-date').value
+        'email': email
       }
 
       this.registred(oauth, data);
     });
   }
 
+  /**
+   * Registred
+   * @param {Object} oauth
+   * @param {string} oauth.email
+   * @param {string} oauth.password
+   * @param {Object} data
+   * @param {string} data.firstName
+   * @param {string} data.lastName
+   * @param {string} data.email
+   */
   registred (oauth, data) {
-    this.auth.createUserWithEmailAndPassword(oauth.email, oauth.password).then(() => (
+    this.auth.createUserWithEmailAndPassword(oauth.email, oauth.password).then((currentUser) => (
       this.firestore.collection('users').add({
         'lastName': data.lastname.toLowerCase(),
         'firstName': data.firstname.toLowerCase(),
-        'email': data.email.toLowerCase(),
-        'birthDate': new Date(data.birthdate)
+        'email': data.email.toLowerCase()
       })
     )).then(() => {
       vNotify.success({
         'text': 'Bienvenue !',
         'title':'Inscription résussie'
       });
-    }).catch(() => {
+    }).catch((error) => {
       vNotify.error({
-        'text': 'Une erreur c\'est produite lors de votre inscription',
+        'text': error,
         'title': 'Error'
       });
     });

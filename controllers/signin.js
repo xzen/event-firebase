@@ -20,7 +20,7 @@ class Signin extends Controller {
 
     el.innerHTML = this.tpl;
 
-    const elButton = document.querySelector('.singin-button');
+    const elButton = document.querySelector('#signin .signin-button');
 
     elButton.addEventListener('click', () => {
       this.checkAuth(this.getInputValues());
