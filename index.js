@@ -9,6 +9,7 @@ import EventShow from './controllers/event-show.js';
 import Signout from './controllers/signout.js';
 import Signin from './controllers/signin.js';
 import Signup from './controllers/signup.js';
+import Profile from './controllers/profile.js';
 
 /**
  * @@ App
@@ -28,7 +29,10 @@ class App {
     });
 
     this.router.add('/', () => (new Home()));
-    this.router.add('/user/signout', () => (new Signout()));
+    firebase.auth().onAuthStateChanged(user => {
+      user ? this.router.add('/user/profile', () => (new Profile())) : this.router.navigateTo('/');
+    });
+    this.router.add('/user/signout', () => (new Signout(this.router)));
     this.router.add('/user/signin', () => (new Signin()));
     this.router.add('/user/signup', () => (new Signup(this.router)));
     this.router.add('/event/show/(:any)', (id) => (new EventShow(this.router, id)));

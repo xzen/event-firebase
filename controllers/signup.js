@@ -86,6 +86,7 @@ class Signup extends Controller {
         'text': 'Bienvenue !',
         'title':'Inscription résussie'
       });
+      this.router.navigateTo('/user/profile');
     }).catch((error) => {
       vNotify.error({
         'text': error,

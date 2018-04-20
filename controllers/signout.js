@@ -1,21 +1,20 @@
-import Controller from './controller.js';
-
 /**
  * @@Signout
  */
-class Signout extends Controller {
-  constructor () {
-    super();
+class Signout {
+  constructor (router) {    
+    this.auth = firebase.auth();
+    this.router = router;
 
-    this.render();
+    this.destroyOauth();
   }
 
-  async render () {
-    const el = document.querySelector('.container-fluid');
-
-    this.tpl = await this.getTemplate('./views/signout.html');
-
-    el.innerHTML = this.tpl;
+  destroyOauth() {
+    this.auth.signOut().then(() => {
+      this.router.navigateTo('/');
+    }).catch(() => {
+      this.router.navigateTo('/');
+    });
   }
 }
 

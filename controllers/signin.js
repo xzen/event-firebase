@@ -1,4 +1,5 @@
 import Controller from './controller.js';
+import Navigation from './navigation.js';
 
 /**
  * @@Signin
@@ -31,8 +32,8 @@ class Signin extends Controller {
    * Get input values
    */
   getInputValues () {
-    const mail = document.querySelector('.singin-input-mail').value;
-    const password = document.querySelector('.singin-input-password').value;
+    const mail = document.querySelector('.signin-input-mail').value;
+    const password = document.querySelector('.signin-input-password').value;
 
     return {
       mail,
@@ -49,6 +50,8 @@ class Signin extends Controller {
         'text': 'Bienvenue !',
         'title':'Connexion résussie'
       });
+
+      new Navigation();
     }).catch(() => {
       vNotify.error({
         'text': 'Ce compte n\'existe pas',
