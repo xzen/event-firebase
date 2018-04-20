@@ -27,16 +27,29 @@ class EventShow extends Controller {
       return;
     }
 
-    dom.querySelector('.image').src = data.image;
-    dom.querySelector('.title').textContent = data.title;
-    dom.querySelector('.description').textContent = data.description;
-    ! data.link ? dom.querySelector('.link-event-insight').remove() : dom.querySelector('.link-event-insight').href = data.link;
-    ! data.city ? dom.querySelector('.city').remove() : dom.querySelector('.city').textContent = data.city;
-    ! data.adress ? dom.querySelector('.adress').remove() : dom.querySelector('.adress').textContent = data.adress;
-    ! data.spaceTimeInfo ? dom.querySelector('.space-time-info').remove() : dom.querySelector('.space-time-info').textContent = data.spaceTimeInfo ;
-    ! data.pricingInfo ? dom.querySelector('.pricing-info').remove() : dom.querySelector('.pricing-info').textContent = data.pricingInfo;
+    const adressEl = dom.querySelector('.adress');
+    const cityEL = dom.querySelector('.city');
+    const descriptionEl = dom.querySelector('.description');
+    const imgEl = dom.querySelector('.image');
+    const linkEventInsightEl = dom.querySelector('.link-event-insight');
+    const pricingInfoEL = dom.querySelector('.pricing-info');
+    const regionEL = dom.querySelector('.region');
+    const spaceTimeInfoEl = dom.querySelector('.space-time-info');
+    const titleEl = dom.querySelector('.title');
+    const mapEl = dom.querySelector('.map');
 
-    el.firstChild.replaceWith(dom.querySelector('body').firstChild);
+    titleEl.textContent = data.title;
+    descriptionEl.textContent = data.description;
+
+    ! data.adress ? adressEl.remove() : adressEl.textContent = data.adress;
+    ! data.city ? cityEL.remove() : cityEL.textContent = data.city;
+    ! data.image ? imgEl.remove() : imgEl.src = data.image;
+    ! data.link ? linkEventInsightEl.remove() : linkEventInsightEl.href = data.link;
+    ! data.pricingInfo ? pricingInfoEL.remove() : pricingInfoEL.textContent = data.pricingInfo;
+    ! data.region ? regionEL.remove() : cityEL.textContent = data.region;
+    ! data.spaceTimeInfo ? spaceTimeInfoEL.remove() : spaceTimeInfoEl.textContent = data.spaceTimeInfo;
+
+    el.innerHTML = dom.querySelector('body').firstChild.innerHTML;
   }
 }
 

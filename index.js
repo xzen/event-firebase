@@ -35,8 +35,7 @@ class App {
    */
   run () {
     document.addEventListener('DOMContentLoaded', () => {
-      const navigation = new Navigation();
-      navigation.render('#navigation');
+      new Navigation();
 
       this.routes();
     });

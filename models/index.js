@@ -19,7 +19,11 @@ export const getEventsList = () => {
 
   return result;
 };
-  
+
+/**
+ * Get event
+ * @param {string} eventId
+ */
 export const getEvent = (eventId) => {
   const result = {};
 
@@ -31,6 +35,7 @@ export const getEvent = (eventId) => {
         image: event.fields.image || false,
         link: event.fields.link || false,
         city: event.fields.city || false,
+        region: event.fields.region || false,
         adress: event.fields.adress || false,
         spaceTimeInfo: event.fields['space_time_info'] || false,
         pricingInfo: event.fields['pricing_info'] || false

@@ -6,14 +6,15 @@ import Controller from './controller.js';
 class Navigation extends Controller {
   constructor () {
     super();
+
+    this.render();
   }
 
   /**
    * Render
-   * @param {string} selector
    */
-  async render(selector) {
-    const el = document.querySelector(selector);
+  async render() {
+    const el = document.querySelector('#navigation');
     const tplNavigation = await this.getTemplate('./views/navigation.html');
 
     el.innerHTML = tplNavigation; 
